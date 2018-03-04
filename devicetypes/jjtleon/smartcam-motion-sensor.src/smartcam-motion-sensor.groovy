@@ -16,6 +16,7 @@
 metadata {
 	definition (name: "SmartCam Motion Sensor", namespace: "jjtleon", author: "Joel Tleon") {
 		capability "Motion Sensor"
+        capability "Sensor"
 		capability "Switch"
 	}
 
