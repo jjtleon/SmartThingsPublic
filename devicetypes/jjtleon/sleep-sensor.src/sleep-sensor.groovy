@@ -23,22 +23,20 @@ metadata {
 
 	// 6 x Unlimited grid
 	tiles(scale: 2) {
-		multiAttributeTile(name: "sleeping", type: "generic", width: 6, height: 4, canChangeIcon: false) {
-        	tileAttribute("device.switch", key: "PRIMARY_CONTROL") {
-            	// Blue (#00a0dc) represents "on"-like device states
-                // White (#ffffff) represents "off"-like device states
-                // Orange (#e86d13) represents device states that require the user's attention
-                // Gray (#cccccc) represents "inactive" or "offline" device states
-            	attributeState "on", label: "sleeping", icon: "st.Bedroom.bedroom2", backgroundColor: "#00a0dc"
-            	attributeState "off", label: "not sleeping", icon: "st.Health & Wellness.health12", backgroundColor: "#cccccc"
-            }
+    	standardTile("sleeping", "device.switch", width: 6, height: 4, canChangeIcon: false) {
+           	// Blue (#00a0dc) represents "on"-like device states
+            // White (#ffffff) represents "off"-like device states
+            // Orange (#e86d13) represents device states that require the user's attention
+            // Gray (#cccccc) represents "inactive" or "offline" device states
+            state "on", label: "sleeping", icon: "st.Bedroom.bedroom2", backgroundColor: "#00a0dc"
+            state "off", label: "not sleeping", icon: "st.Health & Wellness.health12", backgroundColor: "#cccccc"
         }
         
         // The "sleeping" tile will appear in the Things view
-        main("sleeping")
+        main "sleeping"
         
         // The "sleeping" tile will appear in the Device Details view
-        details(["sleeping"])
+        details "sleeping"
 	}
 }
 

@@ -25,22 +25,20 @@ metadata {
 
 	// 6 x Unlimited grid
 	tiles(scale: 2) {
-		multiAttributeTile(name: "motion", type: "generic", width: 6, height: 4, canChangeIcon: false) {
-        	tileAttribute("device.motion", key: "PRIMARY_CONTROL") {
-            	// Blue (#00a0dc) represents "on"-like device states
-                // White (#ffffff) represents "off"-like device states
-                // Orange (#e86d13) represents device states that require the user's attention
-                // Gray (#cccccc) represents "inactive" or "offline" device states
-            	attributeState "active", label: "motion", icon: "st.motion.motion.active", backgroundColor: "#00a0dc"
-            	attributeState "inactive", label: "no motion", icon: "st.motion.motion.inactive", backgroundColor: "#cccccc"
-            }
+    	standardTile("motion", "device.motion", width: 6, height: 4, canChangeIcon: false) {
+            // Blue (#00a0dc) represents "on"-like device states
+            // White (#ffffff) represents "off"-like device states
+            // Orange (#e86d13) represents device states that require the user's attention
+            // Gray (#cccccc) represents "inactive" or "offline" device states
+            state "active", label: "motion", icon: "st.motion.motion.active", backgroundColor: "#00a0dc"
+            state "inactive", label: "no motion", icon: "st.motion.motion.inactive", backgroundColor: "#cccccc"
         }
         
         // The "motion" tile will appear in the Things view
-        main("motion")
+        main "motion"
         
         // The "motion" tile will appear in the Device Details view
-        details(["motion"])
+        details "motion"
 	}
     
     preferences {
