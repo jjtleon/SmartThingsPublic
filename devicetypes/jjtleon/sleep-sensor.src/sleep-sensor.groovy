@@ -15,7 +15,10 @@
  */
 metadata {
 	definition (name: "Sleep Sensor", namespace: "jjtleon", author: "Joel Tleon") {
+    	capability "Sleep Sensor"
 		capability "Switch"
+        
+        attribute "sleeping", "enum", ["not sleeping", "sleeping"]
 	}
 
 	simulator {
@@ -23,13 +26,13 @@ metadata {
 
 	// 6 x Unlimited grid
 	tiles(scale: 2) {
-    	standardTile("sleeping", "device.switch", width: 6, height: 4, canChangeIcon: false) {
+    	standardTile("sleeping", "device.sleeping", width: 6, height: 4, canChangeIcon: false) {
            	// Blue (#00a0dc) represents "on"-like device states
             // White (#ffffff) represents "off"-like device states
             // Orange (#e86d13) represents device states that require the user's attention
             // Gray (#cccccc) represents "inactive" or "offline" device states
-            state "on", label: "sleeping", icon: "st.Bedroom.bedroom2", backgroundColor: "#00a0dc"
-            state "off", label: "not sleeping", icon: "st.Health & Wellness.health12", backgroundColor: "#cccccc"
+            state "sleeping", label: "sleeping", icon: "st.Bedroom.bedroom2", backgroundColor: "#00a0dc"
+            state "not sleeping", label: "not sleeping", icon: "st.Health & Wellness.health12", backgroundColor: "#cccccc"
         }
         
         // The "sleeping" tile will appear in the Things view
@@ -48,10 +51,10 @@ def parse(String description) {
 // handle commands
 def on() {
 	log.debug "Executing 'on'"
-	sendEvent(name: "switch", value: "on")
+    sendEvent(name: "sleeping", value: "sleeping")
 }
 
 def off() {
 	log.debug "Executing 'off'"
-	sendEvent(name: "switch", value: "off")
+    sendEvent(name: "sleeping", value: "not sleeping")
 }
