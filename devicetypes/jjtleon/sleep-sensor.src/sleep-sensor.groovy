@@ -26,20 +26,20 @@ metadata {
 
 	// 6 x Unlimited grid
 	tiles(scale: 2) {
-    	standardTile("sleeping", "device.sleeping", width: 6, height: 4, canChangeIcon: false) {
+    	standardTile("sleeping", "device.sleeping", width: 6, height: 4) {
            	// Blue (#00a0dc) represents "on"-like device states
             // White (#ffffff) represents "off"-like device states
             // Orange (#e86d13) represents device states that require the user's attention
             // Gray (#cccccc) represents "inactive" or "offline" device states
-            state "sleeping", label: "sleeping", icon: "st.Bedroom.bedroom2", backgroundColor: "#00a0dc"
-            state "not sleeping", label: "not sleeping", icon: "st.Health & Wellness.health12", backgroundColor: "#cccccc"
+            state "sleeping", label: '${name}', icon: "st.Bedroom.bedroom2", backgroundColor: "#00a0dc"  // blue
+            state "not sleeping", label: '${name}', icon: "st.Health & Wellness.health12", backgroundColor: "#cccccc"  // gray
         }
         
         // The "sleeping" tile will appear in the Things view
-        main "sleeping"
+        main("sleeping")
         
         // The "sleeping" tile will appear in the Device Details view
-        details "sleeping"
+        details("sleeping")
 	}
 }
 

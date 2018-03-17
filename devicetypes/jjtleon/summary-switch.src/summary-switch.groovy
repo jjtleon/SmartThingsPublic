@@ -28,15 +28,15 @@ metadata {
             // White (#ffffff) represents "off"-like device states
             // Orange (#e86d13) represents device states that require the user's attention
             // Gray (#cccccc) represents "inactive" or "offline" device states
-			state "on", label: "good", icon: "st.Weather.weather14", backgroundColor: "#00a0dc"
-			state "off", label: "bad", icon: "st.Weather.weather10", backgroundColor: "#e86d13"
+			state "on", label: "good", icon: "st.Weather.weather14", backgroundColor: "#00a0dc"  // blue
+			state "off", label: "bad", icon: "st.Weather.weather10", backgroundColor: "#e86d13"  // orange
 		}
         
         // The "switch" tile will appear in the Things view
-		main "switch"
+		main("switch")
         
         // The "switch" tile will appear in the Device Details view
-		details "switch"
+		details("switch")
 	}
 }
 
