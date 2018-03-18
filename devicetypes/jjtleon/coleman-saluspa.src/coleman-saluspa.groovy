@@ -20,7 +20,7 @@ metadata {
         attribute "filter", "enum", ["off", "on"]
         attribute "heat", "enum", ["off", "on"]
         attribute "massage", "enum", ["off", "on"]
-        attribute "mode", "enum", ["idle", "filtering", "heating", "massaging", "heat massage"]
+        attribute "mode", "enum", ["idle", "filtering", "heating", "massaging"]
         
 		command "setMode", ["string"]
 	}
@@ -39,7 +39,6 @@ metadata {
             state "filtering", label: '${name}', icon: "st.Health & Wellness.health2", backgroundColor: "#ffffff"  // white
             state "heating", label: '${name}', icon: "st.Health & Wellness.health2", backgroundColor: "#e86d13"  // orange
             state "massaging", label: '${name}', icon: "st.Health & Wellness.health2", backgroundColor: "#00a0dc"  // blue
-            state "heat massage", label: '${name}', icon: "st.Health & Wellness.health2", backgroundColor: "#44b621"  // green
         }
     	standardTile("filter", "device.filter", width: 2, height: 2) {
             state "off", label: '${name}', icon: "st.Outdoor.outdoor8", backgroundColor: "#ffffff"  // white
@@ -90,15 +89,9 @@ def setMode(mode) {
     } else if (mode == "massaging") {
 		log.debug "Setting mode to massaging"
 	    sendEvent(name: "filter", value: "on")
-	    sendEvent(name: "heat", value: "off")
-	    sendEvent(name: "massage", value: "on")
-	    sendEvent(name: "mode", value: "massaging")
-    } else if (mode == "heat massage") {
-		log.debug "Setting mode to massaging"
-	    sendEvent(name: "filter", value: "on")
 	    sendEvent(name: "heat", value: "on")
 	    sendEvent(name: "massage", value: "on")
-	    sendEvent(name: "mode", value: "heat massage")
+	    sendEvent(name: "mode", value: "massaging")
     } else {
 		log.debug "Unknown mode: ${mode}"
     }
