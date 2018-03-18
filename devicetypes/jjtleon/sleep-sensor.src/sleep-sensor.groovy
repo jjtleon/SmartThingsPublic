@@ -39,7 +39,7 @@ metadata {
         main("sleeping")
         
         // The "sleeping" tile will appear in the Device Details view
-        details("sleeping")
+        details(["sleeping"])
 	}
 }
 

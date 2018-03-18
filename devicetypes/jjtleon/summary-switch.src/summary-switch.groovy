@@ -36,7 +36,7 @@ metadata {
 		main("switch")
         
         // The "switch" tile will appear in the Device Details view
-		details("switch")
+		details(["switch"])
 	}
 }
 

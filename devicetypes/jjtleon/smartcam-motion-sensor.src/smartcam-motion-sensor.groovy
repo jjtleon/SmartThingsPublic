@@ -38,7 +38,7 @@ metadata {
         main("motion")
         
         // The "motion" tile will appear in the Device Details view
-        details("motion")
+        details(["motion"])
 	}
     
     preferences {
