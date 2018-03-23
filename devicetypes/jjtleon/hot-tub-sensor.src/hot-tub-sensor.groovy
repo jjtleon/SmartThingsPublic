@@ -66,13 +66,3 @@ def setTemperature(temp) {
 	log.debug "Setting temperature to ${temp}"
     sendEvent(name: "temperature", value: temp)
 }
-
-def temperatureUp() {
-	log.debug "Increasing temperature"
-    sendEvent(name: "temperature", value: device.currentValue("temperature") + 1)
-}
-
-def temperatureDown() {
-	log.debug "Decreasing temperature"
-    sendEvent(name: "temperature", value: device.currentValue("temperature") - 1)
-}
