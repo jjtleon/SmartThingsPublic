@@ -22,8 +22,6 @@ metadata {
         
 		command "setHotTubOperatingState", ["string"]
         command "setTemperature", ["number"]
-        command "temperatureUp"
-        command "temperatureDown"
 	}
 
 	simulator {
