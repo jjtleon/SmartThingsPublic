@@ -16,12 +16,14 @@
 metadata {
 	definition (name: "Hot Tub Sensor", namespace: "jjtleon", author: "Joel Tleon") {
         capability "Sensor"
+        capability "Switch"
         capability "Temperature Measurement"
         
 		attribute "hotTubFilterMode", "enum", ["off", "on"]
         attribute "hotTubHeatMode", "enum", ["off", "on"]
         attribute "hotTubMassageMode", "enum", ["off", "on"]
 		attribute "hotTubOperatingState", "enum", ["idle", "filtering", "heating", "massaging"]
+        attribute "tempText", "string"
         
 		command "setHotTubFilterMode", ["enum"]
 		command "setHotTubHeatMode", ["enum"]
@@ -41,8 +43,8 @@ metadata {
             	attributeState "heating", label: '${name}', icon: "st.Health & Wellness.health2", backgroundColor: "#e86d13"  // orange
             	attributeState "massaging", label: '${name}', icon: "st.Health & Wellness.health2", backgroundColor: "#00a0dc"  // blue
             }
-            tileAttribute("device.temperature", key: "SECONDARY_CONTROL") {
-            	attributeState "temperature", label: '${currentValue}°'
+            tileAttribute("device.tempText", key: "SECONDARY_CONTROL") {
+            	attributeState "tempText", label: '${currentValue}°'
             }
         }
         standardTile("filter", "device.hotTubFilterMode", width: 2, height: 2) {
@@ -72,6 +74,14 @@ def parse(String description) {
 }
 
 // handle commands
+def on() {
+	log.debug "Executing 'on'"
+}
+
+def off() {
+	log.debug "Executing 'off'"
+}
+
 def setHotTubFilterMode(mode) {
 	log.debug "Setting hotTubFilterMode to ${mode}"
     sendEvent(name: "hotTubFilterMode", value: mode)
@@ -81,6 +91,7 @@ def setHotTubFilterMode(mode) {
 def setHotTubHeatMode(mode) {
 	log.debug "Setting hotTubHeatMode to ${mode}"
     sendEvent(name: "hotTubHeatMode", value: mode)
+	sendEvent(name: "switch", value: mode)
     updateHotTubOperatingState()
 }
 
@@ -109,4 +120,5 @@ def updateHotTubOperatingState() {
 def setTemperature(temp) {
 	log.debug "Setting temperature to ${temp}"
     sendEvent(name: "temperature", value: temp)
+    sendEvent(name: "tempText", value: String.format("%3.2f", temp))
 }
