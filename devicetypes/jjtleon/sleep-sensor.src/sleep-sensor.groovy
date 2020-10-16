@@ -52,9 +52,11 @@ def parse(String description) {
 def on() {
 	log.debug "Executing 'on'"
     sendEvent(name: "sleeping", value: "sleeping")
+    sendEvent(name: "switch", value: "on")
 }
 
 def off() {
 	log.debug "Executing 'off'"
     sendEvent(name: "sleeping", value: "not sleeping")
+    sendEvent(name: "switch", value: "off")
 }
